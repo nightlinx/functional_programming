@@ -17,8 +17,7 @@ let c4 = {nazwisko = "Lis"; wiek = 10; ocena = 3};;
 let lista = c1 :: c2 :: c3 :: c4 :: [];;
 
 let find list =
-	match List.filter (fun a -> 
-							let {wiek = wiek; ocena = ocena} = a in wiek < 25 && ocena < 5 ) list with
+	match List.filter (fun a -> let {wiek = wiek; ocena = ocena} = a in wiek < 25 && ocena < 5 ) list with
 		| [] -> raise Not_found
 		| x -> List.hd x
 
@@ -44,10 +43,10 @@ let rec naPrzemian(list) =
 	| [] -> true
 	| h1::[] -> true
 	| h1::h2::tail ->
-			match (h1, h2) with
-			|(A h1, B h2) -> naPrzemian(List.tl list)
-			|(B h1, A h2) -> naPrzemian(List.tl list)
-			|(_,_) -> false
+	match (h1, h2) with
+		|(A h1, B h2) -> naPrzemian(List.tl list)
+		|(B h1, A h2) -> naPrzemian(List.tl list)
+		|(_,_) -> false
 ;;
 		
 naPrzemian list1
