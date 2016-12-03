@@ -19,7 +19,7 @@ let list = fan (-3);;
 ltake (15,list);;
 
 (*zad3*)
-(*]Napisać funkcję doModulo przekształcającą elementy listy leniwej z liczbami*)
+(*Napisać funkcję doModulo przekształcającą elementy listy leniwej z liczbami*)
 (* w listę leniwą z wartościami tej listy modulo wartość podana jako argument tej funkcji. *)
 let rec lmap f = function
 	| LNil -> LNil
