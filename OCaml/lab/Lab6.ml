@@ -9,10 +9,10 @@ let rec ltake = function
 (*zadanej liczby początkowej n, czyli kolejnymi wyrazami ciągu są liczby *)
 (* 0,1,-1,2,-2,3,-3,... *)
 let rec fan k=
-		if k<=0 
-			then LCons(k, function  () -> fan (k*(-1)+1))
-		else 
-			LCons(k, function  () -> fan (k*(-1)))
+	if k<=0 
+		then LCons(k, function  () -> fan (k*(-1)+1))
+	else 
+		LCons(k, function  () -> fan (k*(-1)))
 ;;
 
 let list = fan (-3);; 
