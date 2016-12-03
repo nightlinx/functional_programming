@@ -21,3 +21,25 @@ def doModulo(k:Int,stream:Stream[Int]) = {
     }
  helper(stream)
 }
+
+//zad5
+//Napisaæ funkcjê lshuffle ³¹cz¹c¹ dwie listy leniwe [a1,a2,a3,…] oraz [b1,b2,b3,…]
+//w ten sposób, ¿e w nowej liœcie leniwej elementy bêd¹ na przemian [a1,b1,a2,b2,…]. 
+//Gdyby jedna z list by³a d³u¿sza, to jej elementy bêd¹ na koñcu po³¹czonej listy
+
+def lshuffle (s1: Stream[Int],s2: Stream[Int]):Stream[Int] = {
+  (s1,s2) match {
+    case (h1 #:: t1, h2 #:: t2) => h1 #:: h2#:: lshuffle (t1,t2)
+    case (Stream.Empty, _ ) => s2
+    case ( _, Stream.Empty) => s1
+  }
+}
+
+val s1 = Stream.cons(2,Stream.cons(2,Stream.empty))
+val s2 = Stream.cons(5,Stream.cons(6,Stream.cons(7,Stream.empty)))
+val s3 = Stream.empty
+val result = lshuffle(s1,s2)
+val result = lshuffle(s1,s3)
+result force
+
+
