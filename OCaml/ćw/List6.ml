@@ -104,16 +104,41 @@ module ListQueue: QUEUE_FUN =
 	end;;
 
 let q = ListQueue.empty();;
-ListQueue.isEmpty(ListQueue.enqueue("e1", ListQueue.empty()));;
+ListQueue.(isEmpty(enqueue("e1", empty())));;
 ListQueue.isEmpty(q);;
 
-ListQueue.dequeue(ListQueue.enqueue("e1", ListQueue.enqueue("e2", q))) = ListQueue.enqueue("e1", ListQueue.dequeue(ListQueue.enqueue("e2", q)));;
-ListQueue.dequeue(ListQueue.enqueue("e1", ListQueue.empty())) = ListQueue.empty();;
-ListQueue.dequeue(ListQueue.empty()) = ListQueue.empty();;
+ListQueue.(dequeue(enqueue("e1", enqueue("e2", q)))) = ListQueue.(enqueue("e1", dequeue(enqueue("e2", q)));;
+ListQueue.(dequeue(enqueue("e1", empty()))) = ListQueue.empty();;
+ListQueue.(dequeue(empty())) = ListQueue.empty();;
 
-ListQueue.first(ListQueue.enqueue("e1", ListQueue.enqueue("e2", q))) = ListQueue.first(ListQueue.enqueue("e2", q));;
-ListQueue.first(ListQueue.enqueue("e1", ListQueue.empty())) = "e1";;
+ListQueue.(first(enqueue("e1",enqueue("e2", q)))) = ListQueue.(first(enqueue("e2", q)));;
+ListQueue.(first(enqueue("e1",empty()))) = "e1";;
 
 
-
+module Queue: QUEUE_FUN = 
+	struct
+		type 'a t = 'a list * 'a list
+		exception Empty of string
+		
+		let empty() = [], []
+		let enqueue (elem, queue) = 
+			match queue with
+			| [], [] -> [elem], [] 
+			| l1, l2 -> l1, elem :: l2
+		
+		let dequeue = function
+			| [_], [] -> [], []
+			| [_], l2 -> List.rev l2, []
+			| _ :: t, l2 -> t, l2
+			| [], [] -> [], []
+		
+		let first = function
+			| [], [] -> raise (Empty "Pusta kolejka")
+			| h :: _, _ -> h
+			| _ -> raise (Empty "Blad implementacji")
+		
+		let isEmpty queue = 
+			([], []) = queue
+		
+	end;;
 
