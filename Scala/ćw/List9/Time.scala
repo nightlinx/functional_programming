@@ -61,8 +61,8 @@ class Time(h1: Int, m1: Int) {
 }
 
 //b) Zmien klase Time z podpunktu a) w taki sposob, ¿eby czas byl pamiêtany jako liczba minut, 
-//ktore uplynely od pó³nocy. Klasa ma miec tylko jedno pole. Publiczny interfejs klasy i jej 
-//funkcjonalnosc maj¹ pozostac niezmienione, tzn. obie implementacje klasy maja byc pod tym 
+//ktore uplynely od polnocy. Klasa ma miec tylko jedno pole. Publiczny interfejs klasy i jej 
+//funkcjonalnosc maja pozostac niezmienione, tzn. obie implementacje klasy maja byc pod tym 
 //wzgledem nierozroznialne. 
 
 class Time(h1: Int, m1: Int) {
