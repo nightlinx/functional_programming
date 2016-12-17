@@ -92,3 +92,7 @@ class Time(h1: Int, m1: Int) {
   }
   override def toString = "" + m
 }
+
+
+
+
