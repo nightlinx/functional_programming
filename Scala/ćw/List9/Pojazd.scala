@@ -1,7 +1,7 @@
 //3. Zdefiniuj klase Pojazd z polami tylko do odczytu dla producenta, modelu, roku produkcji
 //i z polem modyfikowalnym dla numeru rejestracyjnego. Klasa powinna umozliwiac       
 //tworzenie nowych obiektow na cztery sposoby. Zawsze nalezy podawac nazwe producenta i modelu. 
-//Rok produkcji i numer rejestracyjny s¹ opcjonalne. Domyslna wartoscia dla roku     
+//Rok produkcji i numer rejestracyjny sa opcjonalne. Domyslna wartoscia dla roku     
 //produkcji jest -1, a dla numeru rejestracyjnego napis pusty. Ktory konstruktor powinien bycc      
 //glowny i dlaczego? 
 
