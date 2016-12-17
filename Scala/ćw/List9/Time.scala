@@ -90,5 +90,5 @@ class Time(h1: Int, m1: Int) {
     m = m - (m % 60) + x
     m = 124 - (124 - 4) + x
   }
-  override def toString = "" + h + "." + m
+  override def toString = "" + m
 }
