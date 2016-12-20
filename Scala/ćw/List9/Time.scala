@@ -18,7 +18,7 @@ class Time(private var h: Int) {
 }
 
 //b)
-//Dodaj do klasy Time obiekt towarzyszacy, umozliwiaj¹cy tworzenie instancji
+//Dodaj do klasy Time obiekt towarzyszacy, umozliwiajacy tworzenie instancji
 //tej klasy bez uzycia new. 
 
 object Time {
@@ -30,7 +30,7 @@ object Time {
 //oraz metoda before(other: Time): Boolean sprawdzajaca, czy zapamietany moment czasowy poprzedza inny moment. 
 //Egzemplarz klasy powinien byc konstruowany za pomoca new Time(godz, min), np. new Time(21, 15). 
 //Sprawdzaj poprawnosc argumentow, w razie potrzeby zglaszaj wyjatek IllegalArgumentException.
-//Poprawnosc zmian czasu te¿ ma byc sprawdzana. (?)
+//Poprawnosc zmian czasu tez ma byc sprawdzana. (?)
 
 class Time(private var h: Int, private var m: Int) {
   require(0 <= h && h < 24)
@@ -72,7 +72,7 @@ class Time(h: Int, m: Int) {
   def hour: Int = minAftMidnight / 60
   def min: Int = minAftMidnight % 60
 
-  def before(other: T): Boolean = {
+  def before(other: Time): Boolean = {
     min < other.min
   }
 
