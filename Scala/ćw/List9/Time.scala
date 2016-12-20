@@ -32,20 +32,15 @@ object Time {
 //Sprawdzaj poprawnosc argumentow, w razie potrzeby zglaszaj wyjatek IllegalArgumentException.
 //Poprawnosc zmian czasu te¿ ma byc sprawdzana. (?)
 
-class Time(h1: Int, m1: Int) {
-
-  private var h: Int = h1
-  private var m: Int = m1
+class Time(private var h: Int, private var m: Int) {
+  require(0 <= h && h < 24)
+  require(0 <= m && m < 60)
 
   def hour: Int = h
   def min: Int = m
 
-  if (this.h > 23 || this.h < 0 || this.m > 59 || this.m < 0) {
-    throw new IllegalArgumentException
-  }
-
   def before(other: Time2): Boolean = {
-    (this.h < other.h) || (this.h == other.h && this.m < other.h)
+    (hour < other.hour) || (hour == other.hour && hour < other.hour)
   }
 
   def hour_=(x: Int) {
@@ -60,39 +55,36 @@ class Time(h1: Int, m1: Int) {
   override def toString = "" + h + "." + m
 }
 
+object Time {
+  def apply(h: Int, m: Int) = new Time2(h, m)
+}
 //b) Zmien klase Time z podpunktu a) w taki sposob, ¿eby czas byl pamiêtany jako liczba minut, 
 //ktore uplynely od polnocy. Klasa ma miec tylko jedno pole. Publiczny interfejs klasy i jej 
 //funkcjonalnosc maja pozostac niezmienione, tzn. obie implementacje klasy maja byc pod tym 
 //wzgledem nierozroznialne. 
 
-class Time(h1: Int, m1: Int) {
+class Time(h: Int, m: Int) {
+  require(0 <= h && h < 24)
+  require(0 <= m && m < 60)
 
-  private var m: Int = h1 * 60 + m1
+  private var minAftMidnight: Int = h * 60 + m
 
-  def hour: Int = m / 60
-  def min: Int = m % 60
+  def hour: Int = minAftMidnight / 60
+  def min: Int = minAftMidnight % 60
 
-  if (this.h1 > 23 || this.h1 < 0 || this.m1 > 59 || this.m1 < 0) {
-    throw new IllegalArgumentException
-  }
-
-  def before(other: Time): Boolean = {
+  def before(other: T): Boolean = {
     min < other.min
   }
 
   def hour_=(x: Int) {
     require(x >= 0 && x < 24)
-    m = x * 60 + m % 60
+    minAftMidnight = x * 60 + min
   }
 
   def min_=(x: Int) {
     require(x >= 0 && x < 60)
-    m = m - (m % 60) + x
-    m = 124 - (124 - 4) + x
+    minAftMidnight = hour * 60 + x
   }
-  override def toString = "" + m
+  override def toString = "" + minAftMidnight
 }
-
-
-
 

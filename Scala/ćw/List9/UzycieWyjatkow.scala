@@ -1,5 +1,4 @@
-class UzycieWyjatkow {
-  println("object")
+object UzycieWyjatkow {
   
   def main(args: Array[String]) {
       
@@ -8,6 +7,7 @@ class UzycieWyjatkow {
     } 
     catch {
       case e: Exception => println(e)
+      e.printStackTrace();
     }
   }   
   
@@ -24,5 +24,4 @@ class UzycieWyjatkow {
 defined class UzycieWyjatkow
 
 scala> UzycieWyjatkow.main(Array())
-object
 java.lang.Exception: Wyjatek zglosila metoda3
