@@ -1,4 +1,4 @@
-package lab_list9;
+package lab9;
 
 public class FullException extends Exception {
 

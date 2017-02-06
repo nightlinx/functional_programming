@@ -1,4 +1,4 @@
-package lab_list9;
+package lab9;
 
 public class ArrayStack<E> implements StackInterface<E> {
 
